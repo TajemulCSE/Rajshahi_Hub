@@ -1,16 +1,24 @@
-# rajshahi_hub
+# Rajshahi Hub
 
-A new Flutter project.
+Rajshahi Hub is a **smart citizen service app** designed to bring all essential information, public services, and community features of Rajshahi into one platform.  
+Built with **Flutter**, this app aims to be a **one-stop solution** for residents, students, tourists, and businesses in Rajshahi.
 
-## Getting Started
+## ✨ Core Features
+- 🔐 User authentication (phone/email verification, profile management)  
+- 🔔 Push notifications (notices, alerts, reminders)  
+- 📰 Local news & notices  
+- 📍 Google Maps integration for services & locations  
+- 🌐 Multi-language support (Bangla + English)  
+- 📚 Education, health, emergency & government directories  
+- 🛒 Business & shop listings  
+- 🚨 Emergency alerts and services (police, fire, ambulance)  
+- 📢 Citizen complaints & reporting system  
+- 🩸 Blood donor directory  
+- 🏞 Tourism & heritage information  
+- ☁ Offline access with partial caching  
+- 🌙 Dark mode & accessibility features  
 
-This project is a starting point for a Flutter application.
+## 🎯 Vision
+Rajshahi Hub will serve as a **digital gateway for Rajshahi**, combining **public services, daily utilities, cultural identity, and modern citizen engagement tools** in one application.
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+---
