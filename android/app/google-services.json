@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "108063481975",
+    "project_id": "rajshahi-hub",
+    "storage_bucket": "rajshahi-hub.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:108063481975:android:60e0a066c7fbd76123a672",
+        "android_client_info": {
+          "package_name": "com.example.rajshahi_hub"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAIBEnN7QyVRsCp2kgX7RWhgSUbqL49FJU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
