@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:rajshahi_hub/provider/auth_provider.dart';
 import 'package:rajshahi_hub/screens/auth/login/login.dart';
 
 class Signup extends StatefulWidget {
@@ -10,9 +12,32 @@ class Signup extends StatefulWidget {
 
 class _SignupState extends State<Signup> {
   final _SignUpForm = GlobalKey<FormState>();
+  TextEditingController emailController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
   @override
   Widget build(BuildContext context) {
-     double screenWeight = MediaQuery.of(context).size.width;
+    showErrorSnakeBar(AuthProvider auth) {
+      if (auth.errorMsg != null && auth.errorMsg!.isNotEmpty) {
+        Future.delayed(Duration.zero, () {
+          ScaffoldMessenger.of(
+            context,
+          ).showSnackBar(SnackBar(content: Text(auth.errorMsg!,style: TextStyle(color: Colors.red),)));
+        });
+        
+        
+      } else {
+        Future.delayed(Duration.zero, () {
+          ScaffoldMessenger.of(
+            context,
+          ).showSnackBar(SnackBar(content: Text("SignUp Success!",
+          style: TextStyle(color: Colors.green),)));
+        });
+        print("SignUp success");
+       
+      }
+    }
+
+    double screenWeight = MediaQuery.of(context).size.width;
     double screenHeight = MediaQuery.of(context).size.height;
     return Scaffold(
       body: SingleChildScrollView(
@@ -41,6 +66,7 @@ class _SignupState extends State<Signup> {
                     Padding(
                       padding: const EdgeInsets.all(15.0),
                       child: TextFormField(
+                        controller: emailController,
                         validator: (value) {
                           if (value == null || value.isEmpty) {
                             return "Please Enter your email";
@@ -97,6 +123,7 @@ class _SignupState extends State<Signup> {
                     Padding(
                       padding: const EdgeInsets.all(15.0),
                       child: TextFormField(
+                        controller: passwordController,
                         validator: (value) {
                           if (value == null || value.isEmpty) {
                             return "Please Enter your password";
@@ -150,29 +177,41 @@ class _SignupState extends State<Signup> {
                         ),
                       ),
                     ),
-                    ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.amber,
-                      ),
-                      onPressed: () {
-                        if (_SignUpForm.currentState!.validate()) {
-                          print("SignUp success");
-                        }
+                    Consumer<AuthProvider>(
+                      builder: (context, auth, child) {
+                        return auth.isloading
+                            ? CircularProgressIndicator()
+                            : ElevatedButton(
+                              style: ElevatedButton.styleFrom(
+                                backgroundColor: Colors.amber,
+                              ),
+                              onPressed: () async {
+                                if (_SignUpForm.currentState!.validate()) {
+                                  await auth.signUpWithEmailPassword(
+                                    emailController.text,
+                                    passwordController.text,
+                                  );
+                                  //snakebar problem need to fix when error in signin
+                                  showErrorSnakeBar(auth);
+                                  
+                                }
+                              },
+                              child: Text(
+                                "SignUp",
+                                style: TextStyle(
+                                  fontFamily: 'Manrope',
+                                  fontSize: 30,
+                                  fontWeight: FontWeight.w600,
+                                  color: Colors.white,
+                                ),
+                              ),
+                            );
                       },
-                      child: Text(
-                        "SignUp",
-                        style: TextStyle(
-                          fontFamily: 'Manrope',
-                          fontSize: 30,
-                          fontWeight: FontWeight.w600,
-                          color: Colors.white,
-                        ),
-                      ),
                     ),
                   ],
                 ),
               ),
-             
+
               Padding(
                 padding: const EdgeInsets.all(50.0),
                 child: Row(
